@@ -1,0 +1,3 @@
+album_index:
+    path:  /admin/family
+    defaults: { _controller: AlbumBundle:Admin:family }
