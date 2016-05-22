@@ -1,3 +1,7 @@
 album:
     resource: "@AlbumBundle/Resources/config/routing.yml"
     prefix:   /album
+
+#album_i18n:
+#    resource: i18n
+#    type: album_i18n

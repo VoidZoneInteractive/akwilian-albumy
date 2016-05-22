@@ -9,6 +9,7 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/components-font-awesome/css/font-awesome.min.css') }}">
 
     {% block stylesheets %}{% endblock %}
 
@@ -20,7 +21,9 @@
     <![endif]-->
 </head>
 <body>
-{% block body %}{% endblock %}
+<div id="content">
+    {% block body %}{% endblock %}
+</div>
 
 {% block javascripts %}{% endblock %}
 

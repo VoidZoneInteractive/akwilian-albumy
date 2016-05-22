@@ -1,0 +1,3 @@
+album_order:
+    path:  /album/zamow
+    defaults: { _controller: AlbumBundle:Album:orderForm }
