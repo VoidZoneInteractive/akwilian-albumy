@@ -4,13 +4,10 @@ namespace AlbumBundle\Form;
 
 
 use AlbumBundle\Entity\Album;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Doctrine\ORM\EntityRepository;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver ;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AlbumType extends AbstractType {
 
@@ -26,15 +23,13 @@ class AlbumType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add(
-            $builder->create(
-                'album_family',
-                'choice',
-                array(
-                    'disabled' => false,
-                    'attr' => array('autocomplete' => 'off', 'placeholder' => 'Cms.voucher.shop.placeholder')
-                )
-            ));
+        $builder->add('family', EntityType::class, array(
+            // query choices from this entity
+            'class' => 'AlbumBundle:AlbumFamily',
+
+            // use the User.username property as the visible option string
+            'choice_label' => 'name',
+        ));
     }
 
     public function configureOptions (OptionsResolver  $resolver)

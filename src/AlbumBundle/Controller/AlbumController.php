@@ -26,9 +26,13 @@ class AlbumController extends Controller {
             AlbumType::class,
             $entity
         );
-        return array(
-            'entity' => $entity,
-            'form' => $form->createView(),
+
+        return $this->render(
+            'AlbumBundle:Album:order-form.html.twig',
+            array(
+                'entity' => $entity,
+                'form' => $form->createView(),
+            )
         );
     }
 
