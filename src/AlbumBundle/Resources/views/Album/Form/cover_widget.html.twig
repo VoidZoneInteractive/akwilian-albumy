@@ -1,0 +1,10 @@
+{% block choice_widget_expanded %}
+    <div {{ block('widget_container_attributes') }}>
+        {% set type = 'hidden' %}
+        {% for child in form %}
+            <img data-value="child.vars.value" src="{{ child.vars['attr']['data'].image }}" class="img-thumbnail" />
+        {% endfor %}
+
+        <input type="{{ type }}" {{ block('widget_attributes') }}/>
+    </div>
+{% endblock choice_widget_expanded %}

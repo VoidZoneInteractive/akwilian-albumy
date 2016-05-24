@@ -29,6 +29,21 @@ class AlbumType extends AbstractType {
 
             // use the User.username property as the visible option string
             'choice_label' => 'name',
+            'expanded' => true,
+        ));
+        $builder->add('cover', EntityType::class, array(
+            // query choices from this entity
+            'class' => 'AlbumBundle:AlbumCover',
+
+            // use the User.username property as the visible option string
+            'choice_label' => 'name',
+            'expanded' => true,
+
+            'choice_attr' => function ($entity) {
+                return array(
+                    'data' => $entity,
+                );
+            },
         ));
     }
 

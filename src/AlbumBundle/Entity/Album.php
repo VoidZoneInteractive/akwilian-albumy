@@ -26,10 +26,16 @@ class Album {
     /**
      * @ORM\ManyToOne(targetEntity="AlbumFamily")
      * @ORM\JoinColumn(name="family",nullable=false)
-     * @Assert\NotBlank()
      * @Assert\Valid
      */
     public $family;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AlbumCover")
+     * @ORM\JoinColumn(name="cover",nullable=false)
+     * @Assert\Valid
+     */
+    public $cover;
 
     /**
      * Get id
@@ -63,5 +69,29 @@ class Album {
     public function getFamily()
     {
         return $this->family;
+    }
+
+    /**
+     * Set cover
+     *
+     * @param \AlbumBundle\Entity\AlbumCover $cover
+     *
+     * @return Album
+     */
+    public function setCover(\AlbumBundle\Entity\AlbumCover $cover)
+    {
+        $this->cover = $cover;
+
+        return $this;
+    }
+
+    /**
+     * Get cover
+     *
+     * @return \AlbumBundle\Entity\AlbumCover
+     */
+    public function getCover()
+    {
+        return $this->cover;
     }
 }
