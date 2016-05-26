@@ -1,27 +1,86 @@
 {% extends 'base.html.twig' %}
 
-{% form_theme form.cover 'AlbumBundle:Album:form/cover_widget.html.twig' %}
-{% form_theme form.family 'AlbumBundle:Album:form/family_widget.html.twig' %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('bundles/album/styles/main.css') }}" />
+<link href="//fonts.googleapis.com/css?family=Alegreya+Sans+SC:500|Marcellus+SC|Just+Me+Again+Down+Here|Great+Vibes|Clicker+Script|Kaushan+Script&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% form_theme form.first_name 'bootstrap_3_horizontal_layout.html.twig' %}
+{% form_theme form.cover 'AlbumBundle:Album:Form/cover_widget.html.twig' %}
+{% form_theme form.family 'AlbumBundle:Album:Form/family_widget.html.twig' %}
+{% form_theme form.font 'AlbumBundle:Album:Form/font_widget.html.twig' %}
 
 {% block body %}
-    <div class="content" style="margin-top: 20px;">
-        {{ form_start(form) }}
-        <div class="row">
-            <div class="col-lg-2 col-lg-offset-2">
-                {{ form_label(form.family) }}
-            </div>
-            <div class="col-lg-8">
-                {{ form_errors(form.family) }}
-                {{ form_widget(form.family) }}
+    <div class="container" style="margin-top: 20px;">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1>Formularz zamówienia wzoru albumu</h1>
             </div>
         </div>
+
+        {{ form_start(form) }}
+
         <div class="row">
-            <div class="col-lg-2 col-lg-offset-2">
-                {{ form_label(form.cover) }}
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{ form_label(form.family) }}</div>
+                    <div class="panel-body">
+                        {{ form_errors(form.family) }}
+                        {{ form_widget(form.family) }}
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-8">
-                {{ form_errors(form.cover) }}
-                {{ form_widget(form.cover) }}
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{ form_label(form.cover) }}</div>
+                    <div class="panel-body">
+                        {{ form_errors(form.cover) }}
+                        {{ form_widget(form.cover) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{ form_label(form.font) }}</div>
+                    <div class="panel-body">
+                        {{ form_errors(form.font) }}
+                        {{ form_widget(form.font) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><label>Pozostałe informacje</label></div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                {{ form_label(form.first_name) }}
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.first_name) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                {{ form_label(form.last_name) }}
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.last_name) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer" style="text-align: right">{{ form_widget(form.save) }}</div>
+                </div>
             </div>
         </div>
         {{ form_end(form) }}

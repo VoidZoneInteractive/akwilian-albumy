@@ -38,6 +38,31 @@ class Album {
     public $cover;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AlbumFont")
+     * @ORM\JoinColumn(name="font",nullable=false)
+     * @Assert\Valid
+     */
+    public $font;
+
+    /**
+     * @var string $name
+     *
+     * @ORM\Column(name="first_name", type="string", length=50, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Type(type="string")
+     */
+    public $first_name;
+
+    /**
+     * @var string $name
+     *
+     * @ORM\Column(name="last_name", type="string", length=50, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Type(type="string")
+     */
+    public $last_name;
+
+    /**
      * Get id
      *
      * @return integer
@@ -93,5 +118,77 @@ class Album {
     public function getCover()
     {
         return $this->cover;
+    }
+
+    /**
+     * Set font
+     *
+     * @param \AlbumBundle\Entity\AlbumFont $font
+     *
+     * @return Album
+     */
+    public function setFont(\AlbumBundle\Entity\AlbumFont $font)
+    {
+        $this->font = $font;
+
+        return $this;
+    }
+
+    /**
+     * Get font
+     *
+     * @return \AlbumBundle\Entity\AlbumFont
+     */
+    public function getFont()
+    {
+        return $this->cover;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return Album
+     */
+    public function setFirstName($firstName)
+    {
+        $this->first_name = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->first_name;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     *
+     * @return Album
+     */
+    public function setLastName($lastName)
+    {
+        $this->last_name = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->last_name;
     }
 }
