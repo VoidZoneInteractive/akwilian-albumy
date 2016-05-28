@@ -5,6 +5,10 @@
 <link href="//fonts.googleapis.com/css?family=Alegreya+Sans+SC:500|Marcellus+SC|Just+Me+Again+Down+Here|Great+Vibes|Clicker+Script|Kaushan+Script&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
 {% endblock %}
 
+{% block javascripts %}
+<script src="{{ asset('bundles/album/scripts/main.js') }}"></script>
+{% endblock %}
+
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
 {% form_theme form.first_name 'bootstrap_3_horizontal_layout.html.twig' %}
 {% form_theme form.cover 'AlbumBundle:Album:Form/cover_widget.html.twig' %}
@@ -21,11 +25,11 @@
 
         {{ form_start(form) }}
 
-        <div class="row">
+        <div class="row" id="album-family">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">{{ form_label(form.family) }}</div>
-                    <div class="panel-body">
+                    <div class="panel-body text-center">
                         {{ form_errors(form.family) }}
                         {{ form_widget(form.family) }}
                     </div>
@@ -33,11 +37,21 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="album-cover">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">{{ form_label(form.cover) }}</div>
                     <div class="panel-body">
+                        {# Family desciption #}
+                        <div style="margin: 0 auto 40px auto; text-align: center;">
+                            <img src="/bundles/album/images/albums/1/promo.jpg" />
+                            <p style="margin-top: 10px;">
+                                Piękna i elegancka linia albumów.
+                                Oryginalny styl nadaje im wtopiony w okładkę
+                                materiał imitujący szkło na ktrórym znajduje się grawer.
+                                Kolor kart - Czarny
+                            </p>
+                        </div>
                         {{ form_errors(form.cover) }}
                         {{ form_widget(form.cover) }}
                     </div>
@@ -45,7 +59,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="album-font">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">{{ form_label(form.font) }}</div>

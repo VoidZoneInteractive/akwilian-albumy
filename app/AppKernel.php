@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
 
             new AlbumBundle\AlbumBundle(),
         ];

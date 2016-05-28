@@ -33,6 +33,24 @@ class AlbumFamily {
     private $name;
 
     /**
+     * @var string $description
+     *
+     * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
+     * @Assert\Type(type="text")
+     */
+    private $description;
+
+    /**
+     * @var string $image
+     *
+     * @ORM\Column(name="image", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Type(type="string")
+     */
+    private $image;
+
+    /**
      * Get id
      *
      * @return integer
@@ -64,5 +82,53 @@ class AlbumFamily {
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return AlbumFamily
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return AlbumFamily
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

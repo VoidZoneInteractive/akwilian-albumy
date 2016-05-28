@@ -9,3 +9,19 @@ body {
     width: 100%;
     height: 100%;
 }
+
+/* Form */
+#album-family .radio-inline .radio label {
+    font-size: 18px;
+}
+#album-cover {
+    display: none;
+}
+#album-font {
+    display: none;
+}
+
+/* Panel */
+.panel-heading label {
+    font-size: 20px
+}

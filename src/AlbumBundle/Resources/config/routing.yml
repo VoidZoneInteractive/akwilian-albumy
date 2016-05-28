@@ -1,6 +1,12 @@
 album_index:
     path:  /admin/family
     defaults: { _controller: AlbumBundle:Admin:family }
+
 album_order:
     path:  /zamow
     defaults: { _controller: AlbumBundle:Album:orderForm }
+
+album_ajax_family:
+    path:  /ajax/family/{id}
+    defaults: { _controller: AlbumBundle:Album:ajaxFamily }
+#    condition: "request.isXmlHttpRequest()"

@@ -5,6 +5,7 @@ namespace AlbumBundle\Controller;
 use AlbumBundle\Entity\Album;
 use AlbumBundle\Form\AlbumType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class AlbumController extends Controller {
@@ -343,5 +344,21 @@ class AlbumController extends Controller {
             'type' => $entity->getType(),
             'affiliate_voucher' => $affiliate_voucher_id
         ) + $this->generateSiteMetaData();
+    }
+
+    public function ajaxFamilyAction(Request $request, $id)
+    {
+
+        $family = $this->get('doctrine')->getManager()->getRepository('AlbumBundle:AlbumFamily')->find($id);
+
+        $response = array(
+            'status' => 200,
+            'response' => array(
+                'image' => $family->getImage(),
+                'description' => $family->getDescription(),
+            ),
+        );
+
+        return new JsonResponse($response);
     }
 } 

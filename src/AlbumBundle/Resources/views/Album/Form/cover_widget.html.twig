@@ -1,13 +1,21 @@
 {% block choice_widget_expanded %}
-    <div {{ block('widget_container_attributes') }} class="row">
-        {% set type = 'hidden' %}
-        {% for child in form %}
-        <div class="col-xs-3">
-        <a href="#" class="thumbnail">
-            <img data-value="child.vars.value" src="{{ child.vars['attr']['data'].image }}" />
-        </a>
+    {% set type = 'hidden' %}
+    <div class="row">
+        <div class="col-md-7">
+            {% for child in form %}
+                <div class="col-md-2">
+                    <a style="width: 66px; height: 66px;" href="#" class="thumbnail"  onclick="$('#cover-preview').attr('src', '{{ child.vars['attr']['data'].imageBig }}'); return false;">
+                        <img data-value="child.vars.value" src="{{ child.vars['attr']['data'].image }}" />
+                    </a>
+                </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+        <div class="col-md-5">
+            <img id="cover-preview" class="thumbnail" data-value="child.vars.value" src="" width="390" />
+        </div>
+    </div>
+    <div {{ block('widget_container_attributes') }} class="row">
+
 
         <input type="{{ type }}" {{ block('widget_attributes') }}/>
     </div>
