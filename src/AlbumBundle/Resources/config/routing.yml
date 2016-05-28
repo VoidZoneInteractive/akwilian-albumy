@@ -10,3 +10,5 @@ album_ajax_family:
     path:  /ajax/family/{id}
     defaults: { _controller: AlbumBundle:Album:ajaxFamily }
 #    condition: "request.isXmlHttpRequest()"
+    options:
+        expose: true
