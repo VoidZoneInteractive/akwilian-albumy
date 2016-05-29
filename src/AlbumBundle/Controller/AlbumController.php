@@ -346,16 +346,36 @@ class AlbumController extends Controller {
         ) + $this->generateSiteMetaData();
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return JsonResponse
+     */
     public function ajaxFamilyAction(Request $request, $id)
     {
 
-        $family = $this->get('doctrine')->getManager()->getRepository('AlbumBundle:AlbumFamily')->find($id);
+        $manager = $this->get('doctrine')->getManager();
+
+        $family = $manager->getRepository('AlbumBundle:AlbumFamily')->find($id);
+
+        $covers = $manager->getRepository('AlbumBundle:AlbumCover')->findBy(array(
+            'family' => $family,
+        ));
+
+        foreach ($covers as &$cover) {
+            $cover = array(
+                'image' => $cover->getImage(),
+                'image_big' => $cover->getImageBig(),
+            );
+        }
 
         $response = array(
             'status' => 200,
             'response' => array(
+                'id' => $family->getId(),
                 'image' => $family->getImage(),
-                'description' => $family->getDescription(),
+                'description' => nl2br($family->getDescription()),
+                'covers' => $covers,
             ),
         );
 
