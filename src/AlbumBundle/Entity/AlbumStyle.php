@@ -6,13 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * AlbumFamily
+ * AlbumStyle
  *
- * @ORM\Entity(repositoryClass="AlbumBundle\Repository\AlbumFamilyRepository")
- * @ORM\Table("album_family")
+ * @ORM\Entity(repositoryClass="AlbumBundle\Repository\AlbumCoverRepository")
+ * @ORM\Table("album_style")
  */
-class AlbumFamily {
-
+class AlbumStyle {
     /**
      * @var integer $id
      *
@@ -28,28 +27,8 @@ class AlbumFamily {
      * @ORM\Column(name="name", type="string", length=50, unique=true)
      * @Assert\NotBlank()
      * @Assert\Type(type="string")
-     * @Assert\Length(min="1", max = "50")
      */
     private $name;
-
-    /**
-     * @var string $name
-     *
-     * @ORM\Column(name="label", type="string", length=50, unique=false)
-     * @Assert\NotBlank()
-     * @Assert\Type(type="string")
-     * @Assert\Length(min="1", max = "50")
-     */
-    private $label;
-
-    /**
-     * @var string $description
-     *
-     * @ORM\Column(name="description", type="text")
-     * @Assert\NotBlank()
-     * @Assert\Type(type="text")
-     */
-    private $description;
 
     /**
      * @var string $image
@@ -59,6 +38,23 @@ class AlbumFamily {
      * @Assert\Type(type="string")
      */
     private $image;
+
+    /**
+     * @var string $image_big
+     *
+     * @ORM\Column(name="image_big", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Type(type="string")
+     */
+    private $image_big;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AlbumFamily")
+     * @ORM\JoinColumn(name="family",nullable=false)
+     * @Assert\Valid
+     */
+    public $family;
+
 
     /**
      * Get id
@@ -75,7 +71,7 @@ class AlbumFamily {
      *
      * @param string $name
      *
-     * @return AlbumFamily
+     * @return AlbumCover
      */
     public function setName($name)
     {
@@ -95,35 +91,11 @@ class AlbumFamily {
     }
 
     /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return AlbumFamily
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
      * Set image
      *
      * @param string $image
      *
-     * @return AlbumFamily
+     * @return AlbumCover
      */
     public function setImage($image)
     {
@@ -143,26 +115,50 @@ class AlbumFamily {
     }
 
     /**
-     * Set label
+     * Set imageBig
      *
-     * @param string $label
+     * @param string $imageBig
      *
-     * @return AlbumFamily
+     * @return AlbumCover
      */
-    public function setLabel($label)
+    public function setImageBig($imageBig)
     {
-        $this->label = $label;
+        $this->image_big = $imageBig;
 
         return $this;
     }
 
     /**
-     * Get label
+     * Get imageBig
      *
      * @return string
      */
-    public function getLabel()
+    public function getImageBig()
     {
-        return $this->label;
+        return $this->image_big;
+    }
+
+    /**
+     * Set family
+     *
+     * @param \AlbumBundle\Entity\AlbumFamily $family
+     *
+     * @return AlbumCover
+     */
+    public function setFamily(\AlbumBundle\Entity\AlbumFamily $family)
+    {
+        $this->family = $family;
+
+        return $this;
+    }
+
+    /**
+     * Get family
+     *
+     * @return \AlbumBundle\Entity\AlbumFamily
+     */
+    public function getFamily()
+    {
+        return $this->family;
     }
 }

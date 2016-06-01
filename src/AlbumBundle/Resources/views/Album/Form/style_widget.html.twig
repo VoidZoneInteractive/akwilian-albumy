@@ -1,10 +1,10 @@
 {% block choice_widget_expanded %}
     {% set type = 'hidden' %}
     <div class="row">
-        <div class="col-md-7" id="cover-container">
+        <div class="col-md-7" id="style-container">
             {% for child in form %}
                 <div class="col-md-2">
-                    <a style="width: 66px; height: 66px;" href="#" class="album-cover-item thumbnail" data-value="{{ child.vars.value }}" data-image-big="{{ child.vars['attr']['data'].imageBig }}">
+                    <a style="width: 66px; height: 66px;" href="#" class="album-style-item thumbnail" data-value="{{ child.vars.value }}" data-image-big="{{ child.vars['attr']['data'].imageBig }}">
                         <img src="{{ child.vars['attr']['data'].image }}" />
                     </a>
                 </div>
@@ -12,7 +12,7 @@
         </div>
         <div class="col-md-5">
             <input type="{{ type }}" {{ block('widget_attributes') }}/>
-            <img id="cover-preview" class="thumbnail" data-value="child.vars.value" src="" width="390" />
+            <img id="style-preview" class="thumbnail" data-value="child.vars.value" src="" width="390" />
         </div>
     </div>
 {% endblock choice_widget_expanded %}

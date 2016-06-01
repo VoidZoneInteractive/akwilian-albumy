@@ -26,20 +26,24 @@ class Album {
     /**
      * @ORM\ManyToOne(targetEntity="AlbumFamily")
      * @ORM\JoinColumn(name="family",nullable=false)
-     * @Assert\Valid
      */
     public $family;
 
     /**
      * @ORM\ManyToOne(targetEntity="AlbumCover")
      * @ORM\JoinColumn(name="cover",nullable=false)
-     * @Assert\Valid
      */
     public $cover;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AlbumStyle")
+     * @ORM\JoinColumn(name="style",nullable=true)
+     */
+    public $style;
+
+    /**
      * @ORM\ManyToOne(targetEntity="AlbumFont")
-     * @ORM\JoinColumn(name="font",nullable=false)
+     * @ORM\JoinColumn(name="font",nullable=true)
      * @Assert\Valid
      */
     public $font;
@@ -47,7 +51,7 @@ class Album {
     /**
      * @var string $name
      *
-     * @ORM\Column(name="first_name", type="string", length=50, unique=true)
+     * @ORM\Column(name="first_name", type="string", length=50, unique=false)
      * @Assert\NotBlank()
      * @Assert\Type(type="string")
      */
@@ -56,11 +60,17 @@ class Album {
     /**
      * @var string $name
      *
-     * @ORM\Column(name="last_name", type="string", length=50, unique=true)
+     * @ORM\Column(name="last_name", type="string", length=50, unique=false)
      * @Assert\NotBlank()
      * @Assert\Type(type="string")
      */
     public $last_name;
+
+    /**
+     * @ORM\Column(name="wedding_date", type="datetime")
+     * @Assert\DateTime()
+     */
+    public $wedding_date;
 
     /**
      * Get id
@@ -190,5 +200,53 @@ class Album {
     public function getLastName()
     {
         return $this->last_name;
+    }
+
+    /**
+     * Set weddingDate
+     *
+     * @param \DateTime $weddingDate
+     *
+     * @return Album
+     */
+    public function setWeddingDate($weddingDate)
+    {
+        $this->wedding_date = $weddingDate;
+
+        return $this;
+    }
+
+    /**
+     * Get weddingDate
+     *
+     * @return \DateTime
+     */
+    public function getWeddingDate()
+    {
+        return $this->wedding_date;
+    }
+
+    /**
+     * Set style
+     *
+     * @param \AlbumBundle\Entity\AlbumStyle $style
+     *
+     * @return Album
+     */
+    public function setStyle(\AlbumBundle\Entity\AlbumStyle $style)
+    {
+        $this->style = $style;
+
+        return $this;
+    }
+
+    /**
+     * Get style
+     *
+     * @return \AlbumBundle\Entity\AlbumStyle
+     */
+    public function getStyle()
+    {
+        return $this->style;
     }
 }

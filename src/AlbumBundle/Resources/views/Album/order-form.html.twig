@@ -12,8 +12,9 @@
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
 {% form_theme form.first_name 'bootstrap_3_horizontal_layout.html.twig' %}
 {% form_theme form.cover 'AlbumBundle:Album:Form/cover_widget.html.twig' %}
+{% form_theme form.style 'AlbumBundle:Album:Form/style_widget.html.twig' %}
 {% form_theme form.family 'AlbumBundle:Album:Form/family_widget.html.twig' %}
-{% form_theme form.font 'AlbumBundle:Album:Form/font_widget.html.twig' %}
+{#{% form_theme form.font 'AlbumBundle:Album:Form/font_widget.html.twig' %}#}
 
 {% block body %}
     <div class="container" style="margin-top: 20px;">
@@ -52,24 +53,40 @@
                                 Kolor kart - Czarny
                             </p>
                         </div>
-                        {{ form_errors(form.cover) }}
-                        {{ form_widget(form.cover) }}
+                        <div class="panel panel-default" id="style-panel">
+                            <div class="panel-heading">{{ form_label(form.style) }}</div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    {{ form_errors(form.style) }}
+                                    {{ form_widget(form.style) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" id="cover-panel">
+                            <div class="panel-heading">{{ form_label(form.cover) }}</div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    {{ form_errors(form.cover) }}
+                                    {{ form_widget(form.cover) }}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row" id="album-font">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">{{ form_label(form.font) }}</div>
-                    <div class="panel-body">
-                        {{ form_errors(form.font) }}
-                        {{ form_widget(form.font) }}
-                    </div>
-                </div>
-            </div>
-        </div>
+        {#<div class="row" id="album-font">#}
+            {#<div class="col-lg-12">#}
+                {#<div class="panel panel-default">#}
+                    {#<div class="panel-heading">{{ form_label(form.font) }}</div>#}
+                    {#<div class="panel-body">#}
+                        {#{{ form_errors(form.font) }}#}
+                        {#{{ form_widget(form.font) }}#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
 
         <div class="row">
             <div class="col-lg-12">
@@ -89,6 +106,14 @@
                                 {{ form_label(form.last_name) }}
                                 <div class="col-sm-8">
                                     {{ form_widget(form.last_name) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                {{ form_label(form.wedding_date) }}
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.wedding_date) }}
                                 </div>
                             </div>
                         </div>
